@@ -1,3 +1,10 @@
+# !! Outdated Repo !!
+
+## This repo was merged into https://github.com/azerothcore/Eluna
+## Do not send issues or pull-requests here. Do not use it for production servers.
+## 
+## 
+
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) mod-eluna-lua-engine for AzerothCore
 - Latest build status with azerothcore: [![Build Status](https://github.com/azerothcore/mod-eluna-lua-engine/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-eluna-lua-engine)
 
