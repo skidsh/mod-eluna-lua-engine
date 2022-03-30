@@ -1,6 +1,6 @@
 # !! Outdated Repo !!
 
-## This repo was merged into https://github.com/azerothcore/Eluna
+## This repo was merged into https://github.com/azerothcore/mod-eluna
 ## Do not send issues or pull-requests here. Do not use it for production servers.
 ## 
 ## 
