@@ -57,9 +57,6 @@ public:
     void OnCreatureAddWorld(Creature* creature) override
     {
         sEluna->OnAddToWorld(creature);
-
-        if (creature->IsGuardian() && creature->ToTempSummon() && creature->ToTempSummon()->GetSummonerGUID().IsPlayer())
-            sEluna->OnPetAddedToWorld(creature->ToTempSummon()->GetSummonerUnit()->ToPlayer(), creature);
     }
 
     void OnCreatureRemoveWorld(Creature* creature) override
@@ -332,7 +329,7 @@ public:
 
     bool CanExecuteCommand(ChatHandler& handler, std::string_view cmdStr) override
     {
-        if (!sEluna->OnCommand(handler, std::string(cmdStr).c_str()))
+        if (!sEluna->OnCommand(handler.GetPlayer(), std::string(cmdStr).c_str()))
         {
             return false;
         }
@@ -496,16 +493,6 @@ public:
     }
 };
 
-class Eluna_PetScript : public PetScript
-{
-public:
-    Eluna_PetScript() : PetScript("Eluna_PetScript") { }
-
-    void OnPetAddToWorld(Pet* pet) override
-    {
-        sEluna->OnPetAddedToWorld(pet->GetOwner(), pet);
-    }
-};
 
 class Eluna_PlayerScript : public PlayerScript
 {
@@ -904,10 +891,6 @@ public:
     void OnShutdown() override
     {
         sEluna->OnShutdown();
-    }
-
-    void OnAfterUnloadAllMaps() override
-    {
         Eluna::Uninitialize();
     }
 
@@ -936,7 +919,6 @@ void AddSC_ElunaLuaEngine()
     new Eluna_GuildScript();
     new Eluna_LootScript();
     new Eluna_MiscScript();
-    new Eluna_PetScript();
     new Eluna_PlayerScript();
     new Eluna_ServerScript();
     new Eluna_SpellSC();
